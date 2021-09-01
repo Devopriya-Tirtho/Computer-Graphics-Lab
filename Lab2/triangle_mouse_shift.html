@@ -1,0 +1,83 @@
+<!-- saved from url=(0065)http://math.hws.edu/graphicsbook/source/webgl/simple-texture.html -->
+<!-- modified by Mohammad Imrul Jubair -->
+
+<html>
+<title>LAB-2: Mouse Shift</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=6rxyArTpG9adOC3YrQP_JBJwonrumYmJwusal6Br8n39KapJAe_CR6_ZUilAOXcScKcYcLo4RQ6tYS3nfExCxFOqcXq39bVC4KGBKu9et7aoisuB8Q1JYYTzBvEunIsAyDfGvU7Ax1onX3eBTiiMDH0Oyf2Sb3O0s6HAbPwNhcg1xPR4b5lz5tA1AH1Q0mUkVp2N2b_Hgyr657ecuwBLg2CJfoW6qHNupAU3wstIiCF-FcO1W17fVJwOu6_IQ0VEOSkpysPOH0Xcoivsr_BIIUI08OkFkDhqMFNwo-jZip35GpogyeY5SUs8H7rhBHmVHr9oN3_T5hP_TT2HiWQVsf26l-wFapokGamiapZLfIuQjX0j-7b3TwQeP5nQk4xR-Hs2BIZkXwDqAFzjhn4f2kk5xMfAPrH0Q77sVn5Qguxqft7QISkjz5xEuQa9Bo2OWUL3ip8rzVS5eadpbCJlkQ" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9kb2MtMHMtY2MtZG9jcy5nb29nbGV1c2VyY29udGVudC5jb20vZG9jcy9zZWN1cmVzYy90ZWpyb2Jtb2xzMmsycGRuc2ZxaXB0ZGgwZWY4cTI0aC9lNWpubmZkNTMydmNxdmpsbG9yNGJxa2RqZDlzMTA4MS8xNjEwNTM5NjUwMDAwLzAyMjg5ODc1NTUyNTI2MTg2NDYwLzE1NTA4NDgwMTQxNTE4OTM4MDQzLzFqUHhUMUxkejB6b25rNHBXMWJKbVc3eUN4NGdDZGttUD9lPWRvd25sb2FkJmF1dGh1c2VyPTAmbm9uY2U9bG1kOGRxaW9nMWxhcyZ1c2VyPTE1NTA4NDgwMTQxNTE4OTM4MDQzJmhhc2g9NDVzYnJqZDBjYzJvcTF0aGwzNDNqODhycm5yaGI4MmU"/><canvas id="webglcanvas" width="500" height="500"></canvas>
+
+<script>
+
+    var canvas = document.getElementById("webglcanvas"); 
+    var  gl = canvas.getContext("webgl");
+
+    var vertexShaderSource =
+       `attribute vec3 a_coords;
+	    uniform float u_shift;
+        
+		void main() {
+		//gl_Position = vec4(a_coords, 1.0);
+        gl_Position = vec4((a_coords.x - u_shift,-0.5,1.0), a_coords.y, a_coords.z, 1.0);
+        }`;
+
+	var fragmentShaderSource =
+
+       `precision mediump float;
+        uniform vec3 u_color;
+        void main() {
+            gl_FragColor = vec4(u_color, 1.0);
+        }`;
+
+    var vsh = gl.createShader( gl.VERTEX_SHADER );
+    gl.shaderSource( vsh, vertexShaderSource );
+    gl.compileShader( vsh );
+	
+    var fsh = gl.createShader( gl.FRAGMENT_SHADER );
+    gl.shaderSource( fsh, fragmentShaderSource );
+    gl.compileShader( fsh );
+    
+    var prog = gl.createProgram(); 
+    
+    gl.attachShader( prog, vsh ); 
+    gl.attachShader( prog, fsh );
+    gl.linkProgram( prog ); 
+    gl.useProgram(prog); 
+
+    var a_coords_location = gl.getAttribLocation(prog, "a_coords");
+
+    var coords = new Float32Array( [0.0, 0.0, 0.0,
+									0.0, 0.5, 0.0,
+									0.5, 0.0, 0.0] );
+	
+    var a_coords_buffer = gl.createBuffer(); 
+    gl.bindBuffer(gl.ARRAY_BUFFER, a_coords_buffer); 
+    gl.bufferData(gl.ARRAY_BUFFER, coords, gl.STATIC_DRAW); 
+    gl.vertexAttribPointer(a_coords_location, 3, gl.FLOAT, false, 0, 0); 
+    gl.enableVertexAttribArray(a_coords_location);
+	
+	var u_color_location = gl.getUniformLocation(prog, "u_color");
+	var color = new Float32Array( [0.5, 0.7, 0.3] );
+	gl.uniform3fv(u_color_location,  color);
+	
+	var u_shift_location = gl.getUniformLocation(prog, "u_shift");
+	var shift = 0.0;
+	gl.uniform1f(u_shift_location, shift);
+	
+	gl.clearColor(0.75, 0.75, 0.75, 1.0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.TRIANGLES, 0, 3); 
+	
+	canvas.onmousedown = function ()
+	{  
+    shift = shift + 0.1;
+    gl.uniform1f(u_shift_location, shift);
+	
+	gl.clearColor(0.75, 0.75, 0.75, 1.0);
+	gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.TRIANGLES, 0, 3); 
+	};
+
+</script>
+
+
+
+</html>

@@ -1,0 +1,61 @@
+<html>
+<title>LAB-1: Intro</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=iZf4gMG9m-KbY5Tn93BJjRcl9-AJHwJb-n8Z2BjFUP_WRCjoRzpEOnDf_71JruFz6gmDwV6Gqpp05iOOUIDlGX329HJ-hM2oUQQs6jLSmWsGzPwc_9fSEWldWHoZnVM7wzXErps-o9tCrrAj1g2YDXROC1JQiAFrCW_tEw3X4nte5XEVcYYKDYsW7RVDk7kh9MfBr9llI7Mt5fDnuipZ065qMSXLHv4kb7kS0q_CK6W1fxUwrCT0b3OMRWeR1LQx7MuXhANtgaSsihld6q0NjVaNGs1vvLO_WynL3Xy4xPVL4FfvRVwuKb9sG3JUFfWmJ_uIj5REqcnFzOSD-ytN0YrLmFPeVpdjWmLpeUIH4ogLEH9eotS-92svrEX-nR1Rv6o7xLUx_Diq98xHYeaP4YwwP-SqQFh9RVamo28R5VMvvQl38JwugZtHBI3H-bze9ZtmWwKYF08ezWZjGKFM0g" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9kb2MtMDgtY2MtZG9jcy5nb29nbGV1c2VyY29udGVudC5jb20vZG9jcy9zZWN1cmVzYy90ZWpyb2Jtb2xzMmsycGRuc2ZxaXB0ZGgwZWY4cTI0aC9zczM5bTRpdm40M3NnZWYydWRnaDQ4cDEzZDducTlnNS8xNjA5MTQ3NzI1MDAwLzAyMjg5ODc1NTUyNTI2MTg2NDYwLzE1NTA4NDgwMTQxNTE4OTM4MDQzLzE5cndyNHR5ODlCc0ZRaWc3VUl1NG1meEw0bWlQVXRueD9lPWRvd25sb2FkJmF1dGh1c2VyPTAmbm9uY2U9bTkzMm4yYWliODVsbSZ1c2VyPTE1NTA4NDgwMTQxNTE4OTM4MDQzJmhhc2g9cjgxbXFhbXV1cnRlcGU5a2RnbmsybjJvdHY5Z2RrMDc"/><canvas id="webglcanvas" width="500" height="500"></canvas>
+
+<script>
+
+    var canvas = document.getElementById("webglcanvas"); 
+    var  gl = canvas.getContext("webgl");
+
+    gl.clearColor(0.75, 0.75, 0.75, 1.0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    
+    var vertexShaderSource =
+       `attribute vec3 a_coords;
+        void main() {
+            gl_Position = vec4(a_coords, 1.0);
+        }`;
+
+
+    var fragmentShaderSource =
+       `void main() {
+            gl_FragColor = vec4(1.0, .75, .5, 1.0);
+        }`;
+    
+    var vsh = gl.createShader( gl.VERTEX_SHADER );
+    gl.shaderSource( vsh, vertexShaderSource );
+    gl.compileShader( vsh );
+
+    var fsh = gl.createShader( gl.FRAGMENT_SHADER );
+    gl.shaderSource( fsh, fragmentShaderSource );
+    gl.compileShader( fsh );
+    
+    var prog = gl.createProgram(); 
+    
+    gl.attachShader( prog, vsh ); 
+    gl.attachShader( prog, fsh );
+    gl.linkProgram( prog ); 
+    gl.useProgram(prog); 
+
+    var a_coords_location = gl.getAttribLocation(prog, "a_coords"); 
+
+    var coords = new Float32Array( [0.0, 0.0, 0.0,
+									0.0, 0.5, 0.0,
+									0.5, 0.5, 0.0,
+									0.5, 0.0, 0.0] );
+
+    var a_coords_buffer = gl.createBuffer(); 
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, a_coords_buffer); 
+    gl.bufferData(gl.ARRAY_BUFFER, coords, gl.STATIC_DRAW); 
+    gl.vertexAttribPointer(a_coords_location, 3, gl.FLOAT, false, 0, 0); 
+    gl.enableVertexAttribArray(a_coords_location); 
+    gl.drawArrays(gl.TRIANGLE_FAN, 0, 4); 
+
+
+
+</script>
+
+
+
+</html>

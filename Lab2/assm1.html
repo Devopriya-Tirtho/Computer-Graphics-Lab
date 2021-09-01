@@ -1,0 +1,226 @@
+<!-- saved from url=(0065)http://math.hws.edu/graphicsbook/source/webgl/simple-texture.html -->
+<!-- modified by Mohammad Imrul Jubair -->
+
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Assignment - 1 : 160204083</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=zpTq9gfUBM_oJN5eNETRLBxM2dgbtcnyoqQV4caoN9daJcoXzRRQfCD6tfgAfMAgf_giq-wzhjtc5KysUtNUJjl_gPZmksem_xRWua-CUIRr4MpMQ9VTWZ4w57hu0GpeQNyO8ufCAQoMruUWxIs-rAA9fyDV3d4Rw__Far1VaqqE54I8kLdSUsYg5MC3CGqf4Hg3n8Y1aEyuM8_7QzDsB3mHiXlGc2lpwP_OTqDDzdLhie2_uCNwDHfOjvOdc6W76W0rz4MJOPmZEajTkB5ojEgpSGTFty4Qz6EpMVInsZFoKE_VmV-QghA6PKrODqpYWAbipXdtv5QyF6tlLnUK0xeYiTK09hUZ6o9nqLY-G6rjQC_spRkkif13AXMd3hx0BIPrm7gFzxnH4Ss1KyeQONlDm8G-QTRSQs_Ud5xPzGb7_PY70XwwoIH4OGc6kRkOiQu0Ow_mgr3WTtrS0GaWMrb12stMl0igjI5hqpU6eMZ4tlMvr2aUxlRiQtpjKRXZr_0HDQ3iAaNRJp6PHutBfG8C7pN8fPluyNzSnhh6htfNKZv4aJ6I20q-s2_TbQs2T535mIKzD2hl5o7mpe77Gbsk62n3iH-KBCLCfOSKvbLZvCcDZLKQ7evheLzud7wKV60baeC845rEKJnlW8XKY3gmrDuVISaNeNrnjckpgNVs571PDBXrSwHjMVS8TGMVZRcrQo2WRSy3cVX3FuTvQWWI0pZpL3P1Z8Q-BVqx2UmFuZZZW2Wkf0_d2ShfxtqqydKFrtMxp_-CLhxYbWd09dI2GOAuIVJhrcORg3STPmisVBBK-dO7HK3zzIqtJNl9b4lOhIvQnguJR5teimflWaBqKCHhkGNSjnuRRgC7NNiaFe_X7tdf0lZtzVTP1W4HrtMfXhE6tg6E-iPUs9g2QUGA6jyoshZvrjI5cxya8QEqmh5UwSL3tM3yHILuzFaHyeOeCTdFKFarfnTqnM0oGvV-L5T3Id5nOet0iVq403Hus6oSqnjUAkjfS8D__r_IdBB-9ynjvDIVGDSlkdo7FjZTh025cPQZkUel_zIASYh3LlsDTvHQIZyz74-DXfLBQ5mSXFGKGVo1iYvEYcQvBpQ8J-Q2MIzmIOFcbTvj9Hd2jurqnZ_lIejprcq2VN9fPiBtCxF8KEyLzemgY_vTbJrzZY9yz9ENjEPllkjjEGAlH8Zb2F9ScKfxSaxJjEt8ATCuTgURqppZPQLV_Y9GSw" nonce="1628ea07bf896bf0c7fe82d2b6a0156a" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9tYWlsLWF0dGFjaG1lbnQuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2F0dGFjaG1lbnQvdS8wLz91aT0yJmlrPWE0NWYxNTFiYmUmYXR0aWQ9MC4xJnBlcm1tc2dpZD1tc2ctZjoxNjg5Njk0NzI3NDc2Nzc4MjU2JnRoPTE3NzMwMDY2ZmExYTk1MTAmdmlldz1hdHQmZGlzcD1zYWZlJnJlYWxhdHRpZD1mX2trOXdramdlMCZzYWRkYmF0PUFOR2pkSi12Q0p0ZTZsWjBUSUNJU29lc0FPdlp0TEFLaHlkYWpOcDBHNjctb1Vyc2o4dWJBVnp1c0NfaVB0V2NtLS1ubjU5WU9MZ3RiamlFd05pbWttUGVSRGZ6Q0dMZWtkYXkzVjZ2MUxVdThLdjlDRTREOFJWV1dzZDdtODBTaGpQQTZiWGUzdjJTMl9xalppbDFvV2ZienRrSjVWNVFacDhGSlVRT21NdzFBN3YwY09xdFY4Ynh4WjRrQWdzUmpjalZTUGlOV21qVzNzYjk0b1BlUGVBcjFOUEdKRlBMMFZ3TG1CdURld3hsUXhqVFViTF9CdVcyWHFfZTNRRS00MDZfUEM5VUgzMjhVODdBM1dXcERBX0k5STh2N3B4VHNRUWpxSUJ6NnBZQU1HZUtnX2c4M1R5ZkdEb1RGOXlRWmRsZi0tNmg4ZU85a3lWZnpvQkRicWQ4NFBWSFpTTFdHT2ptZEpvVDZXbGdKUXZQeFFmd1JydGhDdzVPbDZ5NUkxQzlGdENoSnItSXlxZ0lBbTJfOV9RTDdmZUtoVEQxYmxadl9hek5BM0xZci1RSklaNnk0eVItYllNVTlHVUd4cVFkOUxtVkNLcjl4RkUwWFZtQy1vSDJKVjJSM2hMTkw5QTBXb0wwbjlDRDhKdFRRYUh0b3FMMERReXNRVUp0NW13ckhrd09nbW5rVF9GeUViX0dmUVZoWTcxbTlSNHFNUl9Fdy1NY2xyZktDV3VSMEQ1Z3Vjb3A1N0NYeU93M01xMF9xRVFuMjlEc3h6WWI2XzQ1dnBwMWxOUlJLU09TMnQ5MXVvZllfblJFWG10Q1A5eWpFaUxyWV9KcmFDMW9vcWRhYVpPQ29qVzBzbWxRbXkwYWUzcFd1NGhqY2lYdFduc3ZXUk5oa1dtTVdVUk9qdkhGSzExY1B2UTk5aGs"/><canvas id="webglcanvas" width="1000" height="1000"></canvas>
+
+<script>
+
+var vertexShaderSource =
+
+       `attribute vec2 a_coords;
+        void main() {
+            gl_Position = vec4(a_coords,0,50.0);
+            gl_PointSize = 3.0;
+        }`;
+
+
+
+	var fragmentShaderSource =
+
+       `precision mediump float;
+        uniform vec3 u_color;
+        void main() {
+            gl_FragColor = vec4(u_color, 1.0);
+        }`;
+
+var gl;
+var a_coords_location;
+var a_coords_buffer;
+var u_color_location;
+function draw() {
+	var count=0;
+	var shift=0;
+	shift=shift+1;
+    gl.clearColor(0,0,0,1);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+	var n = 7200;
+	var X = new Float32Array(n);
+	var Y = new Float32Array(n);
+	var radius = 0;
+    var angle = 0;
+	for (i=0; i<= 720; i=i+1) {
+	//angle = 0.1 * i;
+    X[i] = 10*Math.cos(3*i)*Math.cos(i);
+	Y[i] = 10*Math.cos(3*i)*Math.sin(i)
+	}
+	
+
+	var coords = new Float32Array(n);
+    var amountOfPoint = 1;
+	for(var i=0; i<=n;i=i+2 ) {
+		coords[i] = X[i];
+		coords[i+1] =Y[i];
+	} 
+    //var coords = new Float32Array( [0.0, 0.0, 0.0, 1.0, 0.0, 0.0] );
+		gl.bindBuffer(gl.ARRAY_BUFFER, a_coords_buffer); // step - 9.a
+		gl.bufferData(gl.ARRAY_BUFFER, coords, gl.STATIC_DRAW); // step - 9.b
+		gl.vertexAttribPointer(a_coords_location, 2, gl.FLOAT, false, 0, 0); // step - 9.c
+		gl.enableVertexAttribArray(a_coords_location); // step - 9.d
+
+
+		var color = new Float32Array( [1.0, 0.0, 0.0] );
+		gl.uniform3fv(u_color_location,  color);
+	
+		gl.clearColor(1.0, 0.99, 0.77, 1.0);
+		gl.clear(gl.COLOR_BUFFER_BIT);
+		gl.drawArrays(gl.POINTS, 0, 2);
+	// step - 9
+ // step - 10
+	gl.canvas.onmousedown = function ()
+    	{  	
+			
+				count=count+1;
+	if(count%2==0){
+	var n = 7200;
+	var X = new Float32Array(n);
+	var Y = new Float32Array(n);
+	var radius = 0;
+    var angle = 0;
+	for (i=0; i<= 720; i=i+1) {
+	//angle = 0.1 * i;
+    X[i] = 10*Math.cos((count)*i)*Math.cos(i);
+	Y[i] = 10*Math.cos((count)*i)*Math.sin(i)
+	}
+	
+
+	var coords = new Float32Array(n);
+    var amountOfPoint = 1;
+	for(var i=0; i<=n;i=i+2 ) {
+		coords[i] = X[i];
+		coords[i+1] =Y[i];
+	} 
+    //var coords = new Float32Array( [0.0, 0.0, 0.0, 1.0, 0.0, 0.0] );
+		gl.bindBuffer(gl.ARRAY_BUFFER, a_coords_buffer); // step - 9.a
+		gl.bufferData(gl.ARRAY_BUFFER, coords, gl.STATIC_DRAW); // step - 9.b
+		gl.vertexAttribPointer(a_coords_location, 2, gl.FLOAT, false, 0, 0); // step - 9.c
+		gl.enableVertexAttribArray(a_coords_location); // step - 9.d
+	
+
+		var color = new Float32Array( [0.0, 7.0, 0.0] );
+		gl.uniform3fv(u_color_location,  color);
+		
+		gl.clearColor(1.0, 0.99, 0.77, 1.0);
+		gl.clear(gl.COLOR_BUFFER_BIT);
+		gl.drawArrays(gl.POINTS, 0, 2);
+	
+	
+	
+			amountOfPoint = amountOfPoint + 720;
+        	gl.clearColor(1.0, 0.99, 0.77, 1.0);
+        	gl.clear(gl.COLOR_BUFFER_BIT);
+            gl.drawArrays(gl.POINTS, 0, amountOfPoint);  }
+	else{	
+	var n = 7200;
+	var X = new Float32Array(n);
+	var Y = new Float32Array(n);
+	var radius = 0;
+    var angle = 0;
+	for (i=0; i<= 720; i=i+1) {
+	//angle = 0.1 * i;
+    X[i] = 10*Math.cos(count*i)*Math.cos(i);
+	Y[i] = 10*Math.cos(count*i)*Math.sin(i)
+	}
+	
+
+	var coords = new Float32Array(n);
+    var amountOfPoint = 1;
+	for(var i=0; i<=n;i=i+2 ) {
+		coords[i] = X[i];
+		coords[i+1] =Y[i];
+	} 
+    //var coords = new Float32Array( [0.0, 0.0, 0.0, 1.0, 0.0, 0.0] );
+		gl.bindBuffer(gl.ARRAY_BUFFER, a_coords_buffer); // step - 9.a
+		gl.bufferData(gl.ARRAY_BUFFER, coords, gl.STATIC_DRAW); // step - 9.b
+		gl.vertexAttribPointer(a_coords_location, 2, gl.FLOAT, false, 0, 0); // step - 9.c
+		gl.enableVertexAttribArray(a_coords_location); // step - 9.d 
+		
+
+		var color = new Float32Array( [1.0, 0.0, 0.0] );
+		gl.uniform3fv(u_color_location,  color);
+		
+	
+		gl.clearColor(1.0, 0.99, 0.77, 1.0);
+		gl.clear(gl.COLOR_BUFFER_BIT);
+		gl.drawArrays(gl.POINTS, 0, 2);
+	
+	
+			amountOfPoint = amountOfPoint + 720;
+        	gl.clearColor(1.0, 0.99, 0.77, 1.0);
+        	gl.clear(gl.COLOR_BUFFER_BIT);
+            gl.drawArrays(gl.POINTS, 0, amountOfPoint); }
+		
+    	};
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function createProgram(gl, vertexShaderSource, fragmentShaderSource) {
+  var vsh = gl.createShader( gl.VERTEX_SHADER ); // step - 1
+  gl.shaderSource( vsh, vertexShaderSource ); // step - 1.a
+  gl.compileShader( vsh ); // step - 1.b
+
+  var fsh = gl.createShader( gl.FRAGMENT_SHADER ); // step - 2
+  gl.shaderSource( fsh, fragmentShaderSource ); // step - 2.a
+  gl.compileShader( fsh ); // step - 2.b
+
+  var prog = gl.createProgram(); // step - 3
+  gl.attachShader( prog, vsh ); // step - 4
+  gl.attachShader( prog, fsh ); // step - 4
+  gl.linkProgram( prog ); // step - 5
+
+  return prog;
+}
+
+
+function initGL() {
+    var prog = createProgram( gl, vertexShaderSource, fragmentShaderSource ); // step - 1 to 5
+    gl.useProgram(prog); // step - 6
+
+    a_coords_location = gl.getAttribLocation(prog, "a_coords"); // step - 7
+    a_coords_buffer = gl.createBuffer(); // step - 8
+	u_color_location = gl.getUniformLocation(prog, "u_color");
+}
+
+
+function init() {
+    var canvas = document.getElementById("webglcanvas");
+    gl = canvas.getContext("webgl");
+    initGL();
+    draw();
+}
+
+init();
+
+
+
+</script>
+
+
+
+</html>
